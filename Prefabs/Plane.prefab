@@ -74,7 +74,6 @@ MonoBehaviour:
   - {fileID: 0}
   currentWayPoint: 0
   speed: 500
-  CanMove: 1
 --- !u!222 &222209640073021520
 CanvasRenderer:
   m_ObjectHideFlags: 1

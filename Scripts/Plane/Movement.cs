@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Plane {
+namespace CircularPlane.Plane {
 	public class Movement : MonoBehaviour {
 
 		// put the points from unity interface
@@ -9,10 +9,13 @@ namespace Plane {
 		public int currentWayPoint = 0; 
 		Transform targetWayPoint;
  
-		public float speed = 4f;
-		
-		//To let move the plane
-		public static bool CanMove;
+		public float speed = 3f;
+
+        public Canvas Canvas;
+        public GameObject StartPoint;
+
+        //To let move the plane
+        public bool CanMove;
 
 		// Update is called once per frame
 		void Update() {
@@ -32,9 +35,9 @@ namespace Plane {
 			
 			
 			// rotate towards the target
-			var dir = targetWayPoint.position - transform.position;
-			var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-			transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+			var Route = targetWayPoint.position - transform.position;
+			var Angle = Mathf.Atan2(Route.y, Route.x) * Mathf.Rad2Deg;
+			transform.rotation = Quaternion.AngleAxis(Angle, Vector3.forward);
  
 			// move towards the target
 			transform.position = Vector3.MoveTowards(transform.position, targetWayPoint.position,   speed*Time.deltaTime);
@@ -52,8 +55,38 @@ namespace Plane {
 			}
 		}
 
-		void OnTriggerExit(Collider other) {
-			CanMove = true;
-		}
-	}
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.transform.childCount <= 10)
+            {
+                //
+                gameObject.transform.position = new Vector2(other.transform.position.x, other.transform.position.y);
+                gameObject.transform.parent = other.transform;
+                CanMove = false;
+            }
+
+        }
+
+
+        private void OnTriggerStay2D(Collider2D other)
+        {
+            if (other.transform.childCount <= 10)
+            {
+                gameObject.transform.position = new Vector2(other.transform.position.x, other.transform.position.y);
+                gameObject.transform.parent = other.transform;
+                CanMove = false;
+            }
+        }
+
+
+
+
+
+        private void OnTriggerExit2D(Collider2D other)
+        {
+            gameObject.transform.parent = Canvas.transform;
+            gameObject.GetComponent<RectTransform>().transform.position = new Vector2(StartPoint.transform.position.x, StartPoint.transform.position.y);
+            CanMove = true;
+        }
+    }
 }
