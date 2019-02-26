@@ -10,10 +10,11 @@ using Newtonsoft.Json;
 namespace CircularPlane.Plane.Shop {
 	
 	public class Getter : MonoBehaviour {
-		public GameObject Panel; 
-		public Text txtName,txtPrice,txtCapacity,txtSpeed;
-		private Sprite Plane;
-		public Image PlaneImage;
+		public Button[] Item;
+        public Canvas Canvas;
+		public Text[] txtName,txtPrice,txtCapacity,txtSpeed;
+		public Sprite[] Planes;
+		public Image[] PlaneImage;
 		// Use this for initialization
 		void Start ()
         {
@@ -25,9 +26,15 @@ namespace CircularPlane.Plane.Shop {
                 {
                     string Json = File.ReadAllText(filePath);
                     var Object = JsonConvert.DeserializeObject<RootObject>(Json);
+                    int Index = 0;
                     foreach (var item in Object.Models)
                     {
-                        PlaneImage.sprite = item.Image;
+                        txtName[Index].text = item.Name;
+                        txtPrice[Index].text = item.Price.ToString() + "$";
+                        txtCapacity[Index].text = item.Capacity.ToString() + " PASS";
+                        txtSpeed[Index].text = item.Speed.ToString()+" KM/H";
+                        PlaneImage[Index].sprite = Planes[Index];
+                        Index++;
                     }
                 }
 			}
@@ -36,12 +43,6 @@ namespace CircularPlane.Plane.Shop {
 				Debug.Log("Error:");
 				Debug.Log(e.Message);
 			}
-		}
-
-		// Update is called once per frame
-		void Update ()
-        {
-		
 		}
 	}
 }

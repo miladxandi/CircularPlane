@@ -84,10 +84,11 @@ namespace CircularPlane.Plane {
 
         private void OnTriggerExit2D(Collider2D other)
         {
-            gameObject.transform.parent = Canvas.transform;
-            gameObject.transform.position = new Vector2(StartPoint.transform.position.x, StartPoint.transform.position.y);
+            transform.parent = Canvas.transform;
+            transform.position = new Vector2(StartPoint.transform.position.x, StartPoint.transform.position.y);
             CanMove = true;
             currentWayPoint = 0;
+            targetWayPoint = wayPointList[currentWayPoint];
         }
     }
 }

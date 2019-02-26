@@ -1,10 +1,10 @@
 {
   "Models":[
-    {"Name":"BluePlane","Price":5000,"Image":"BluePlane","Speed":250},
-    {"Name":"GreenPlane","Price":6000,"Image":"GreenPlane","Speed":350},
-    {"Name":"OrangePlane","Price":7000,"Image":"OrangePlane","Speed":450},
-    {"Name":"RedPlane","Price":8000,"Image":"RedPlane","Speed":550},
-    {"Name":"BlackPlane","Price":100000,"Image":"BlackPlane","Speed":800},
-    {"Name":"GoldenPlane","Price":15000,"Image":"GoldenPlane","Speed":1000}
+    {"Name":"BluePlane","Price":5000,"Image":"BluePlane","Speed":250,"Capacity":250},
+    {"Name":"GreenPlane","Price":6000,"Image":"GreenPlane","Speed":350,"Capacity":300},
+    {"Name":"OrangePlane","Price":7000,"Image":"OrangePlane","Speed":450,"Capacity":400},
+    {"Name":"RedPlane","Price":8000,"Image":"RedPlane","Speed":550,"Capacity":500},
+    {"Name":"BlackPlane","Price":100000,"Image":"BlackPlane","Speed":800,"Capacity":800},
+    {"Name":"GoldenPlane","Price":15000,"Image":"GoldenPlane","Speed":1000,"Capacity":1000}
   ]
 }
