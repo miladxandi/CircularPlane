@@ -44,6 +44,10 @@ namespace CircularPlane.Plane.Shop {
 				Debug.Log(e.Message);
 			}
 		}
+        public void Notification()
+        {
+
+        }
 	}
 }
 
